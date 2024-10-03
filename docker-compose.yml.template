@@ -21,17 +21,18 @@ services:
   viewvc:
     build: .
     logging: *default-logging
-    image: cmpilato/viewvc-testing:latest
+    image: xvid/viewvc-dockerized:latest
     ports:
-      - "8080:80"
+      - "8081:80"
     depends_on:
       - db
     environment:
       PYTHONPATH: /opt/viewvc/lib
       VIEWVC_MODE: ### wsgi|cgi|standalone ###
     volumes:
-      - /opt/svn:/opt/svn:ro
-      - /opt/cvs:/opt/cvs:ro
+      - /path/to/httpd-conf.d:/etc/httpd/conf.d:ro
       - /opt/viewvc-master:/opt/viewvc:ro
+      - /opt/svn:/opt/svn
+      - /opt/cvs:/opt/cvs
 volumes:
   db-data:

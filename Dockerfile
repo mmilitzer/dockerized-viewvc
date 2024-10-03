@@ -1,4 +1,4 @@
-FROM centos:8
+FROM almalinux:8
 
 # Grab packages needed for development.
 RUN yum -y groupinstall "Development Tools"
@@ -24,7 +24,7 @@ RUN yum -y install apr-devel \
 RUN python3 -m pip install mysqlclient
 
 # Install CVS requirements.
-RUN yum -y install http://mirror.centos.org/centos/7/os/x86_64/Packages/rcs-5.9.0-7.el7.x86_64.rpm
+RUN yum -y install https://vault.centos.org/7.9.2009/os/x86_64/Packages/rcs-5.9.0-7.el7.x86_64.rpm 
 
 # Setup the application home directory.
 ENV APP_HOME="/app"

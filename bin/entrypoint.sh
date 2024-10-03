@@ -1,8 +1,9 @@
 #!/bin/sh
 
 prepare_httpd() {
+    mkdir -p /etc/httpd/viewvc-conf.d/
     cp -R ${APP_HOME}/bin/etc/httpd/conf/* /etc/httpd/conf/
-    cp -R ${APP_HOME}/bin/etc/httpd/conf.d/${1}/* /etc/httpd/conf.d/
+    cp -R ${APP_HOME}/bin/etc/httpd/conf.d/${1}/* /etc/httpd/viewvc-conf.d/
     rm -rf /run/httpd/* /tmp/httpd*
 }
 

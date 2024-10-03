@@ -13,8 +13,8 @@ if [ -d "serf" ]; then
     echo "Using local py3c..."
 else
     echo "Fetching serf..."
-    wget https://archive.apache.org/dist/serf/serf-1.3.9.tar.bz2 -O- | tar xfj -
-    mv serf-1.3.9 serf
+    wget https://archive.apache.org/dist/serf/serf-1.3.10.tar.bz2 -O- | tar xfj -
+    mv serf-1.3.10 serf
 fi
 (cd serf; PYTHON=python2 scons && scons install)
 alternatives --set python /usr/bin/python3
@@ -34,8 +34,8 @@ if [ -d "py3c" ]; then
     echo "Using local py3c..."
 else
     echo "Fetching py3c..."
-    wget https://github.com/encukou/py3c/archive/v1.1.tar.gz -O- | tar xfz -
-    mv py3c-1.1 py3c
+    wget https://github.com/encukou/py3c/archive/v1.4.tar.gz -O- | tar xfz -
+    mv py3c-1.4 py3c
 fi
 (cd py3c; cp -R include/* /usr/local/include)
 
@@ -44,8 +44,8 @@ if [ -d "sqlite" ]; then
     echo "Using local sqlite..."
 else
     echo "Fetching sqlite..."
-    wget https://sqlite.org/2020/sqlite-autoconf-3310100.tar.gz -O- | tar xfz -
-    mv sqlite-autoconf-3310100 sqlite
+    wget https://www.sqlite.org/2024/sqlite-autoconf-3460100.tar.gz -O- | tar xfz -
+    mv sqlite-autoconf-3460100 sqlite
 fi
 (cd sqlite; ./configure && make && make install)
 
@@ -54,8 +54,8 @@ if [ -d "subversion" ]; then
     echo "Using local subversion..."
 else
     echo "Fetching subversion..."
-    wget https://ftp.wayne.edu/apache/subversion/subversion-1.14.0.tar.bz2 -O- | tar xfj -
-    mv subversion-1.14.0 subversion
+    wget https://ftp.wayne.edu/apache/subversion/subversion-1.14.3.tar.bz2 -O- | tar xfj -
+    mv subversion-1.14.3 subversion
 fi
 (cd subversion; \
  PYTHON=python3 ./configure --with-py3c=internal --with-lz4=internal --with-utf8proc=internal \
