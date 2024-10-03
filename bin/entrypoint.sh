@@ -7,7 +7,7 @@ prepare_httpd() {
     rm -rf /run/httpd/* /tmp/httpd*
 }
 
-/opt/viewvc/bin/make-database --hostname db --port 3306 --username root --password admin --dbname ViewVC
+/opt/viewvc/bin/db/make-database --hostname db --port 3306 --username root --password admin --dbname ViewVC
 cat <<EOF | mysql --protocol=TCP --host=db --port=3306 --user=root --password=admin
 CREATE USER 'viewvc' IDENTIFIED BY 'viewvc';
 GRANT ALL ON ViewVC.* TO 'viewvc';

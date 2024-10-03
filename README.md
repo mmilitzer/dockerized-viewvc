@@ -41,7 +41,7 @@ HTTP Server.
    `standalone`
 
 3. By default, the Docker stack will expose the service on host port
-   8080.  If you want to use a different port, replace 8080 with the
+   8081.  If you want to use a different port, replace 8081 with the
    port of your choice in the "ports" mapping.
 
 
@@ -54,9 +54,9 @@ the stack in the background (daemon mode) using `docker-compose up
 -d`.
 
 Once the stack fully starts, you should be able to access ViewVC by
-hitting http://localhost:8080/viewvc in your web browser.  (If you
+hitting http://localhost:8081/viewvc in your web browser.  (If you
 configured the stack to expose the service on a different port than
-8080, then make the obvious port number substitution in that URL.)
+8081, then make the obvious port number substitution in that URL.)
 
 Stopping the browser is as simple as running `docker-compose down`.
 
@@ -76,7 +76,7 @@ differing modes, Docker's compose support can handle that!
 3. As above, set the `VIEWVC_MODE` variable in each of your blocks.
 
 4. Finally, make sure you expose each service at a different port --
-   they can't all show up at 8080.
+   they can't all show up at 8081.
 
 
 Building the Docker Image

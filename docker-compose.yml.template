@@ -1,18 +1,18 @@
-version: '3.4'
-
 x-logging:
   &default-logging
   options:
     max-size: '1m'
     max-file: '5'
   driver: json-file
-x-logging:
-  &no-logging
-  driver: none
 services:
   db:
-    logging: *no-logging
-    image: mariadb
+    image: mariadb:10
+    container_name: db
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: admin
@@ -25,7 +25,8 @@ services:
     ports:
       - "8081:80"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     environment:
       PYTHONPATH: /opt/viewvc/lib
       VIEWVC_MODE: ### wsgi|cgi|standalone ###
