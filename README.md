@@ -54,7 +54,7 @@ the stack in the background (daemon mode) using `docker-compose up
 -d`.
 
 Once the stack fully starts, you should be able to access ViewVC by
-hitting http://localhost:8081/viewvc in your web browser.  (If you
+hitting http://localhost:8081/ in your web browser.  (If you
 configured the stack to expose the service on a different port than
 8081, then make the obvious port number substitution in that URL.)
 
