@@ -7,7 +7,6 @@ RUN yum -y install apr-devel \
                    epel-release \
                    httpd \
                    httpd-devel \
-                   mod_dav_svn \
                    mariadb \
                    mariadb-devel \
                    openssl-devel \

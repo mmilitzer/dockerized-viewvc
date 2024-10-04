@@ -54,12 +54,13 @@ if [ -d "subversion" ]; then
     echo "Using local subversion..."
 else
     echo "Fetching subversion..."
-    wget https://ftp.wayne.edu/apache/subversion/subversion-1.14.3.tar.bz2 -O- | tar xfj -
+    wget https://archive.apache.org/dist/subversion/subversion-1.14.3.tar.bz2 -O- | tar xfj -
     mv subversion-1.14.3 subversion
 fi
 (cd subversion; \
- PYTHON=python3 ./configure --with-py3c=internal --with-lz4=internal --with-utf8proc=internal \
+ PYTHON=python3 ./configure --with-py3c=internal --with-lz4=internal --with-utf8proc=internal --with-apxs=/usr/bin/apxs \
      && make install install-swig-py \
-     && echo "/usr/local/lib/svn-python" > /usr/lib/python3.6/site-packages/svn.pth)
+     && echo "/usr/local/lib/svn-python" > /usr/lib/python3.6/site-packages/svn.pth \
+     && make install-mods-shared && mv /usr/local/libexec/* /usr/lib64/httpd/modules)
 
 cd ${PREVDIR}
